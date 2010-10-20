@@ -3537,13 +3537,8 @@ void TestEventListeners::SuppressEventForwarding() {
 // value will never change.
 UnitTest * UnitTest::GetInstance() {
 
-#if (_MSC_VER == 1310 && !defined(_DEBUG)) || defined(__BORLANDC__)
   static UnitTest* const instance = new UnitTest;
   return instance;
-#else
-  static UnitTest instance;
-  return &instance;
-#endif  // (_MSC_VER == 1310 && !defined(_DEBUG)) || defined(__BORLANDC__)
 }
 
 // Gets the number of successful test cases.
