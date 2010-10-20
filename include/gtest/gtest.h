@@ -1974,8 +1974,6 @@ bool StaticAssertTypeEq() {
   GTEST_TEST_(test_case_name, test_name, \
               ::testing::Test, ::testing::internal::GetTestTypeId())
 
-// Define this macro to 1 to omit the definition of TEST(), which
-// is a generic name and clashes with some other libraries.
 #if !GTEST_DONT_DEFINE_TEST
 #define TEST(test_case_name, test_name) GTEST_TEST(test_case_name, test_name)
 #endif
