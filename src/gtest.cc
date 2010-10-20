@@ -4848,10 +4848,6 @@ void InitGoogleTest(int* argc, char** argv) {
   internal::InitGoogleTestImpl(argc, argv);
 }
 
-// This overloaded version can be used in Windows programs compiled in
-// UNICODE mode.
-void InitGoogleTest(int* argc, wchar_t** argv) {
-  internal::InitGoogleTestImpl(argc, argv);
-}
+
 
 }  // namespace testing
