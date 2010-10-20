@@ -2321,9 +2321,6 @@ void TestCase::Run() {
 
   TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater();
 
-  impl->os_stack_trace_getter()->UponLeavingGTest();
-
-  const internal::TimeInMillis start = internal::GetTimeInMillis();
   for (int i = 0; i < total_test_count(); i++) {
     GetMutableTestInfo(i)->Run();
   }
