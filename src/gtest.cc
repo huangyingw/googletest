@@ -3321,9 +3321,6 @@ class StreamingListener : public EmptyTestEventListener {
   void Send(const string& message) {
     const int len = static_cast<int>(message.length());
     if (write(sockfd_, message.c_str(), len) != len) {
-      GTEST_LOG_(WARNING)
-          << "stream_result_to: failed to stream to "
-          << host_name_ << ":" << port_num_;
     }
   }
 
