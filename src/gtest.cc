@@ -3838,13 +3838,6 @@ UnitTestImpl::UnitTestImpl(UnitTest* parent)
 }
 
 UnitTestImpl::~UnitTestImpl() {
-  // Deletes every TestCase.
-  ForEach(test_cases_, internal::Delete<TestCase>);
-
-  // Deletes every Environment.
-  ForEach(environments_, internal::Delete<Environment>);
-
-  delete os_stack_trace_getter_;
 }
 
 #if GTEST_HAS_DEATH_TEST
