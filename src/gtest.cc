@@ -2223,33 +2223,25 @@ void UnitTestImpl::RegisterParameterizedTests() {
 void TestInfo::Run() {
   if (!should_run_) return;
 
-  // Tells UnitTest where to store test result.
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
   impl->set_current_test_info(this);
 
   TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater();
 
-  // Notifies the unit test event listeners that a test is about to start.
   repeater->OnTestStart(*this);
 
   const TimeInMillis start = internal::GetTimeInMillis();
 
   impl->os_stack_trace_getter()->UponLeavingGTest();
 
-  // Creates the test object.
   Test* const test = HandleExceptionsInMethodIfSupported(
       factory_, &internal::TestFactoryBase::CreateTest,
       "the test fixture's constructor");
 
-  // Runs the test only if the test object was created and its
-  // constructor didn't generate a fatal failure.
   if ((test != NULL) && !Test::HasFatalFailure()) {
-    // This doesn't throw as all user code that can throw are wrapped into
-    // exception handling code.
     test->Run();
   }
 
-  // Deletes the test object.
   impl->os_stack_trace_getter()->UponLeavingGTest();
   HandleExceptionsInMethodIfSupported(
       test, &Test::DeleteSelf_, "the test fixture's destructor");
