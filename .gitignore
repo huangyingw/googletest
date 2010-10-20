@@ -1,2 +1,4 @@
 log
 tags
+make/gtest_main.a
+make/sample1_unittest
