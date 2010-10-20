@@ -3594,6 +3594,7 @@ const TestCase* UnitTest::GetTestCase(int i) const {
 // Gets the i-th test case among all the test cases. i can range from 0 to
 // total_test_case_count() - 1. If i is not in that range, returns NULL.
 TestCase* UnitTest::GetMutableTestCase(int i) {
+  std::cout<<i<<std::endl;
   return impl()->GetMutableTestCase(i);
 }
 

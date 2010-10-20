@@ -889,7 +889,6 @@ inline void FlushInfoLog() { fflush(NULL); }
 //    and then it aborts the program. It aborts the program irrespective of
 //    whether it is built in the debug mode or not.
 #define GTEST_CHECK_(condition) \
-    GTEST_AMBIGUOUS_ELSE_BLOCKER_ \
     if (::testing::internal::IsTrue(condition)) \
       ; \
     else \
