@@ -3536,7 +3536,6 @@ void TestEventListeners::SuppressEventForwarding() {
 // call this before main() starts, from which point on the return
 // value will never change.
 UnitTest * UnitTest::GetInstance() {
-
   static UnitTest* const instance = new UnitTest;
   return instance;
 }
