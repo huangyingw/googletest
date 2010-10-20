@@ -4822,7 +4822,6 @@ void InitGoogleTestImpl(int* argc, CharType** argv) {
 
   internal::g_executable_path = internal::StreamableToString(argv[0]);
 
-  GetUnitTestImpl()->PostFlagParsingInit();
 }
 
 }  // namespace internal
