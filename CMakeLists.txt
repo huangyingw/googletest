@@ -1,8 +1,5 @@
 ########################################################################
-# Experimental CMake build script for Google Test.
-#
-# Consider this a prototype.  It will change drastically.  For now,
-# this is only for people on the cutting edge.
+# CMake build script for Google Test.
 #
 # To run the tests for Google Test itself on Linux, use 'make test' or
 # ctest.  You can select which tests to run using 'ctest -R regex'.
@@ -23,6 +20,9 @@ option(gtest_build_tests "Build all of gtest's own tests." OFF)
 
 option(gtest_build_samples "Build gtest's sample programs." OFF)
 
+option(gtest_disable_pthreads "Disable uses of pthreads in gtest." OFF)
+
+# Defines pre_project_set_up_hermetic_build() and set_up_hermetic_build().
 include(cmake/hermetic_build.cmake OPTIONAL)
 
 if (COMMAND pre_project_set_up_hermetic_build)
@@ -46,10 +46,10 @@ if (COMMAND set_up_hermetic_build)
   set_up_hermetic_build()
 endif()
 
-# Defines functions and variables used by Google Test.
+# Define helper functions and macros used by Google Test.
 include(cmake/internal_utils.cmake)
 
-fix_default_settings()  # Defined in internal_utils.cmake.
+config_compiler_and_linker()  # Defined in internal_utils.cmake.
 
 # Where Google Test's .h files can be found.
 include_directories(
@@ -146,6 +146,13 @@ if (gtest_build_tests)
     src/gtest-all.cc src/gtest_main.cc)
   cxx_library(gtest_main_no_rtti "${cxx_no_rtti}"
     src/gtest-all.cc src/gtest_main.cc)
+
+  cxx_test_with_flags(gtest-death-test_ex_nocatch_test
+    "${cxx_exception} -DGTEST_ENABLE_CATCH_EXCEPTIONS_=0"
+    gtest test/gtest-death-test_ex_test.cc)
+  cxx_test_with_flags(gtest-death-test_ex_catch_test
+    "${cxx_exception} -DGTEST_ENABLE_CATCH_EXCEPTIONS_=1"
+    gtest test/gtest-death-test_ex_test.cc)
 
   cxx_test_with_flags(gtest_no_rtti_unittest "${cxx_no_rtti}"
     gtest_main_no_rtti test/gtest_unittest.cc)

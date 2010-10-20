@@ -538,14 +538,17 @@ TEST_F(TestForDeathTest, SingleEvaluation) {
 }
 
 // Tests that run-away death tests are reported as failures.
-TEST_F(TestForDeathTest, Runaway) {
+TEST_F(TestForDeathTest, RunawayIsFailure) {
   EXPECT_NONFATAL_FAILURE(EXPECT_DEATH(static_cast<void>(0), "Foo"),
                           "failed to die.");
+}
 
+// Tests that death tests report executing 'return' in the statement as
+// failure.
+TEST_F(TestForDeathTest, ReturnIsFailure) {
   EXPECT_FATAL_FAILURE(ASSERT_DEATH(return, "Bar"),
                        "illegal return in test statement.");
 }
-
 
 // Tests that EXPECT_DEBUG_DEATH works as expected,
 // that is, in debug mode, it:
@@ -994,7 +997,7 @@ TEST(AutoHandleTest, AutoHandleWorks) {
 typedef unsigned __int64 BiggestParsable;
 typedef signed __int64 BiggestSignedParsable;
 const BiggestParsable kBiggestParsableMax = ULLONG_MAX;
-const BiggestParsable kBiggestSignedParsableMax = LLONG_MAX;
+const BiggestSignedParsable kBiggestSignedParsableMax = LLONG_MAX;
 #else
 typedef unsigned long long BiggestParsable;
 typedef signed long long BiggestSignedParsable;
