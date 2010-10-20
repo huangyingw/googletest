@@ -3658,7 +3658,6 @@ void UnitTest::RecordPropertyForCurrentTest(const char* key,
 // We don't protect this under mutex_, as we only support calling it
 // from the main thread.
 int UnitTest::Run() {
-  impl()->set_catch_exceptions(GTEST_FLAG(catch_exceptions));
 
   return HandleExceptionsInMethodIfSupported(
       impl(),
