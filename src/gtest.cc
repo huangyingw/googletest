@@ -3689,10 +3689,7 @@ void UnitTest::RecordPropertyForCurrentTest(const char* key,
 // We don't protect this under mutex_, as we only support calling it
 // from the main thread.
 int UnitTest::Run() {
-  // Captures the value of GTEST_FLAG(catch_exceptions).  This value will be
-  // used for the duration of the program.
   impl()->set_catch_exceptions(GTEST_FLAG(catch_exceptions));
-
 
   return HandleExceptionsInMethodIfSupported(
       impl(),
