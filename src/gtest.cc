@@ -2318,7 +2318,6 @@ void TestCase::AddTestInfo(TestInfo * test_info) {
 void TestCase::Run() {
 
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
-  impl->set_current_test_case(this);
 
   TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater();
 
@@ -2334,7 +2333,6 @@ void TestCase::Run() {
   impl->os_stack_trace_getter()->UponLeavingGTest();
 
   repeater->OnTestCaseEnd(*this);
-  impl->set_current_test_case(NULL);
 }
 
 // Clears the results of all tests in this test case.
