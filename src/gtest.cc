@@ -2316,8 +2316,6 @@ void TestCase::AddTestInfo(TestInfo * test_info) {
 }
 
 void TestCase::Run() {
-  internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
-
   for (int i = 0; i < total_test_count(); i++) {
     GetMutableTestInfo(i)->Run();
   }
