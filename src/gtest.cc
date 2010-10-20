@@ -3715,23 +3715,6 @@ int UnitTest::Run() {
     _set_error_mode(_OUT_TO_STDERR);
 #endif
 
-#if _MSC_VER >= 1400 && !GTEST_OS_WINDOWS_MOBILE
-    // In the debug version, Visual Studio pops up a separate dialog
-    // offering a choice to debug the aborted program. We need to suppress
-    // this dialog or it will pop up for every EXPECT/ASSERT_DEATH statement
-    // executed. Google Test will notify the user of any unexpected
-    // failure via stderr.
-    //
-    // VC++ doesn't define _set_abort_behavior() prior to the version 8.0.
-    // Users of prior VC versions shall suffer the agony and pain of
-    // clicking through the countless debug dialogs.
-    // TODO(vladl@google.com): find a way to suppress the abort dialog() in the
-    // debug mode when compiled with VC 7.1 or lower.
-    if (!GTEST_FLAG(break_on_failure))
-      _set_abort_behavior(
-          0x0,                                    // Clear the following flags:
-          _WRITE_ABORT_MSG | _CALL_REPORTFAULT);  // pop-up window, core dump.
-#endif
   }
 #endif  // GTEST_HAS_SEH
 
