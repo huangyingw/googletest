@@ -27,7 +27,7 @@ CXXFLAGS += -g -Wall -Wextra
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = sample1_unittest
+TESTS = $(HFILES)_unittest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -68,13 +68,23 @@ gtest_main.a : gtest-all.o gtest_main.o
 # Builds a sample test.  A test should link with either gtest.a or
 # gtest_main.a, depending on whether it defines its own main()
 # function.
+HFILES=\
+	sample1\
+	sample2\
+	sample3\
+	sample4\
+	sample5\
+	sample6\
+	sample7\
+	sample8\
+	sample9\
 
-sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
+$(HFILES).o : $(USER_DIR)/$(HFILES)$(HFILES).cc $(USER_DIR)/$(HFILES).h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/$(HFILES).cc
 
-sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc \
-                     $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
+$(HFILES)_unittest.o : $(USER_DIR)/$(HFILES)_unittest.cc \
+                     $(USER_DIR)/$(HFILES).h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/$(HFILES)_unittest.cc
 
-sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
+$(HFILES)_unittest : $(HFILES).o $(HFILES)_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
