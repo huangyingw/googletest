@@ -2055,41 +2055,9 @@ bool StaticAssertTypeEq() {
 #define TEST(test_case_name, test_name) GTEST_TEST(test_case_name, test_name)
 #endif
 
-// Defines a test that uses a test fixture.
-//
-// The first parameter is the name of the test fixture class, which
-// also doubles as the test case name.  The second parameter is the
-// name of the test within the test case.
-//
-// A test fixture class must be declared earlier.  The user should put
-// his test code between braces after using this macro.  Example:
-//
-//   class FooTest : public testing::Test {
-//    protected:
-//     virtual void SetUp() { b_.AddElement(3); }
-//
-//     Foo a_;
-//     Foo b_;
-//   };
-//
-//   TEST_F(FooTest, InitializesCorrectly) {
-//     EXPECT_TRUE(a_.StatusIsOK());
-//   }
-//
-//   TEST_F(FooTest, ReturnsElementCountCorrectly) {
-//     EXPECT_EQ(0, a_.size());
-//     EXPECT_EQ(1, b_.size());
-//   }
-
 #define TEST_F(test_fixture, test_name)\
   GTEST_TEST_(test_fixture, test_name, test_fixture, \
               ::testing::internal::GetTypeId<test_fixture>())
-
-// Use this macro in main() to run all tests.  It returns 0 if all
-// tests are successful, or 1 otherwise.
-//
-// RUN_ALL_TESTS() should be invoked after the command line has been
-// parsed by InitGoogleTest().
 
 #define RUN_ALL_TESTS()\
   (::testing::UnitTest::GetInstance()->Run())
