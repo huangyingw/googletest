@@ -587,13 +587,9 @@
 #define GTEST_ATTRIBUTE_UNUSED_
 #endif
 
-// A macro to disallow operator=
-// This should be used in the private: declarations for a class.
 #define GTEST_DISALLOW_ASSIGN_(type)\
   void operator=(type const &)
 
-// A macro to disallow copy constructor and operator=
-// This should be used in the private: declarations for a class.
 #define GTEST_DISALLOW_COPY_AND_ASSIGN_(type)\
   type(type const &);\
   GTEST_DISALLOW_ASSIGN_(type)
