@@ -2332,8 +2332,6 @@ void TestCase::Run() {
   elapsed_time_ = internal::GetTimeInMillis() - start;
 
   impl->os_stack_trace_getter()->UponLeavingGTest();
-  HandleExceptionsInMethodIfSupported(
-      this, &TestCase::RunTearDownTestCase, "TearDownTestCase()");
 
   repeater->OnTestCaseEnd(*this);
   impl->set_current_test_case(NULL);
