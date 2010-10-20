@@ -2158,23 +2158,6 @@ TestInfo::~TestInfo() { delete factory_; }
 
 namespace internal {
 
-// Creates a new TestInfo object and registers it with Google Test;
-// returns the created object.
-//
-// Arguments:
-//
-//   test_case_name:   name of the test case
-//   name:             name of the test
-//   test_case_comment: a comment on the test case that will be included in
-//                      the test output
-//   comment:          a comment on the test that will be included in the
-//                     test output
-//   fixture_class_id: ID of the test fixture class
-//   set_up_tc:        pointer to the function that sets up the test case
-//   tear_down_tc:     pointer to the function that tears down the test case
-//   factory:          pointer to the factory that creates a test object.
-//                     The newly created TestInfo instance will assume
-//                     ownership of the factory object.
 TestInfo* MakeAndRegisterTestInfo(
     const char* test_case_name, const char* name,
     const char* test_case_comment, const char* comment,
