@@ -2185,9 +2185,6 @@ TestInfo* MakeAndRegisterTestInfo(
   TestInfo* const test_info =
       new TestInfo(test_case_name, name, test_case_comment, comment,
                    fixture_class_id, factory);
-  std::cout<<set_up_tc<<std::endl;
-  std::cout<<tear_down_tc<<std::endl;
-  std::cout<<test_info<<std::endl;
   GetUnitTestImpl()->AddTestInfo(set_up_tc, tear_down_tc, test_info);
   return test_info;
 }
