@@ -2224,7 +2224,6 @@ void TestInfo::Run() {
   if (!should_run_) return;
 
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
-  impl->set_current_test_info(this);
 
   TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater();
 
