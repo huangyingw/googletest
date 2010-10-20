@@ -3319,9 +3319,6 @@ class StreamingListener : public EmptyTestEventListener {
 
   // Sends a string to the socket.
   void Send(const string& message) {
-    GTEST_CHECK_(sockfd_ != -1)
-        << "Send() can be called only when there is a connection.";
-
     const int len = static_cast<int>(message.length());
     if (write(sockfd_, message.c_str(), len) != len) {
       GTEST_LOG_(WARNING)
