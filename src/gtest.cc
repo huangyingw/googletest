@@ -3825,17 +3825,12 @@ namespace internal {
 
 UnitTestImpl::UnitTestImpl(UnitTest* parent)
     : parent_(parent),
-#ifdef _MSC_VER
 #pragma warning(push)                    // Saves the current warning state.
 #pragma warning(disable:4355)            // Temporarily disables warning 4355
                                          // (using this in initializer).
       default_global_test_part_result_reporter_(this),
       default_per_thread_test_part_result_reporter_(this),
 #pragma warning(pop)                     // Restores the warning state again.
-#else
-      default_global_test_part_result_reporter_(this),
-      default_per_thread_test_part_result_reporter_(this),
-#endif  // _MSC_VER
       global_test_part_result_repoter_(
           &default_global_test_part_result_reporter_),
       per_thread_test_part_result_reporter_(
