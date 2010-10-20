@@ -2020,31 +2020,6 @@ bool StaticAssertTypeEq() {
   return true;
 }
 
-// Defines a test.
-//
-// The first parameter is the name of the test case, and the second
-// parameter is the name of the test within the test case.
-//
-// The convention is to end the test case name with "Test".  For
-// example, a test case for the Foo class can be named FooTest.
-//
-// The user should put his test code between braces after using this
-// macro.  Example:
-//
-//   TEST(FooTest, InitializesCorrectly) {
-//     Foo foo;
-//     EXPECT_TRUE(foo.StatusIsOK());
-//   }
-
-// Note that we call GetTestTypeId() instead of GetTypeId<
-// ::testing::Test>() here to get the type ID of testing::Test.  This
-// is to work around a suspected linker bug when using Google Test as
-// a framework on Mac OS X.  The bug causes GetTypeId<
-// ::testing::Test>() to return different values depending on whether
-// the call is from the Google Test framework itself or from user test
-// code.  GetTestTypeId() is guaranteed to always return the same
-// value, as it always calls GetTypeId<>() from the Google Test
-// framework.
 #define GTEST_TEST(test_case_name, test_name)\
   GTEST_TEST_(test_case_name, test_name, \
               ::testing::Test, ::testing::internal::GetTestTypeId())
