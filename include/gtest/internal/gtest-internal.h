@@ -470,9 +470,6 @@ typedef const void* TypeId;
 template <typename T>
 class TypeIdHelper {
  public:
-  // dummy_ must not have a const type.  Otherwise an overly eager
-  // compiler (e.g. MSVC 7.1 & 8.0) may try to merge
-  // TypeIdHelper<T>::dummy_ for different Ts as an "optimization".
   static bool dummy_;
 };
 
@@ -484,10 +481,6 @@ bool TypeIdHelper<T>::dummy_ = false;
 // same type argument is guaranteed to return the same ID.
 template <typename T>
 TypeId GetTypeId() {
-  // The compiler is required to allocate a different
-  // TypeIdHelper<T>::dummy_ variable for each T used to instantiate
-  // the template.  Therefore, the address of dummy_ is guaranteed to
-  // be unique.
   return &(TypeIdHelper<T>::dummy_);
 }
 
