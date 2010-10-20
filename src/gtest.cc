@@ -2319,8 +2319,6 @@ void TestCase::Run() {
 
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
 
-  TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater();
-
   for (int i = 0; i < total_test_count(); i++) {
     GetMutableTestInfo(i)->Run();
   }
