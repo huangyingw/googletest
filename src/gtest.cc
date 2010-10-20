@@ -265,14 +265,6 @@ UInt32 Random::Generate(UInt32 range) {
   return state_ % range;
 }
 
-// GTestIsInitialized() returns true iff the user has initialized
-// Google Test.  Useful for catching the user mistake of not initializing
-// Google Test before calling RUN_ALL_TESTS().
-//
-// A user must call testing::InitGoogleTest() to initialize Google
-// Test.  g_init_gtest_count is set to the number of times
-// InitGoogleTest() has been called.  We don't protect this variable
-// under a mutex as it is only accessed in the main thread.
 int g_init_gtest_count = 0;
 static bool GTestIsInitialized() { return g_init_gtest_count != 0; }
 
@@ -3877,11 +3869,6 @@ void UnitTestImpl::ConfigureStreamingOutput() {
 }
 #endif  // GTEST_CAN_STREAM_RESULTS_
 
-// Performs initialization dependent upon flag values obtained in
-// ParseGoogleTestFlagsOnly.  Is called from InitGoogleTest after the call to
-// ParseGoogleTestFlagsOnly.  In case a user neglects to call InitGoogleTest
-// this function is also called from RunAllTests.  Since this function can be
-// called more than once, it has to be idempotent.
 void UnitTestImpl::PostFlagParsingInit() {
   // Ensures that this function does not execute more than once.
   if (!post_flag_parse_init_performed_) {
