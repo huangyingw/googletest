@@ -2321,7 +2321,6 @@ void TestCase::Run() {
 
   TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater();
 
-  repeater->OnTestCaseStart(*this);
   impl->os_stack_trace_getter()->UponLeavingGTest();
 
   const internal::TimeInMillis start = internal::GetTimeInMillis();
@@ -2332,7 +2331,6 @@ void TestCase::Run() {
 
   impl->os_stack_trace_getter()->UponLeavingGTest();
 
-  repeater->OnTestCaseEnd(*this);
 }
 
 // Clears the results of all tests in this test case.
