@@ -2245,11 +2245,8 @@ void TestInfo::Run() {
 
   result_.set_elapsed_time(internal::GetTimeInMillis() - start);
 
-  // Notifies the unit test event listener that a test has just finished.
   repeater->OnTestEnd(*this);
 
-  // Tells UnitTest to stop associating assertion results to this
-  // test.
   impl->set_current_test_info(NULL);
 }
 
