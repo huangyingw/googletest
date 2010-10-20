@@ -4772,6 +4772,7 @@ void ParseGoogleTestFlagsOnly(int* argc, wchar_t** argv) {
 template <typename CharType>
 void InitGoogleTestImpl(int* argc, CharType** argv) {
   g_init_gtest_count++;
+  std::cout<<g_init_gtest_count<<std::endl;
 }
 
 }  // namespace internal
