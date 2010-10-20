@@ -451,14 +451,10 @@ struct TraceInfo {
   String message;
 };
 
-// This is the default global test part result reporter used in UnitTestImpl.
-// This class should only be used by UnitTestImpl.
 class DefaultGlobalTestPartResultReporter
   : public TestPartResultReporterInterface {
  public:
   explicit DefaultGlobalTestPartResultReporter(UnitTestImpl* unit_test);
-  // Implements the TestPartResultReporterInterface. Reports the test part
-  // result in the current test.
   virtual void ReportTestPartResult(const TestPartResult& result);
 
  private:
