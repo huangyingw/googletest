@@ -3844,11 +3844,6 @@ UnitTestImpl::UnitTestImpl(UnitTest* parent)
       random_seed_(0),  // Will be overridden by the flag before first use.
       random_(0),  // Will be reseeded before first use.
       elapsed_time_(0),
-#if GTEST_HAS_DEATH_TEST
-      internal_run_death_test_flag_(NULL),
-      death_test_factory_(new DefaultDeathTestFactory),
-#endif
-      // Will be overridden by the flag before first use.
       catch_exceptions_(false) {
   listeners()->SetDefaultResultPrinter(new PrettyUnitTestResultPrinter);
 }
