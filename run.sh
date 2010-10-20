@@ -1,4 +1,4 @@
 cd make
-make
-./sample1_unittest
+make \
+&& ./sample1_unittest
 
