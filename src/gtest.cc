@@ -4822,13 +4822,6 @@ void InitGoogleTestImpl(int* argc, CharType** argv) {
 
   internal::g_executable_path = internal::StreamableToString(argv[0]);
 
-#if GTEST_HAS_DEATH_TEST
-  g_argvs.clear();
-  for (int i = 0; i != *argc; i++) {
-    g_argvs.push_back(StreamableToString(argv[i]));
-  }
-#endif  // GTEST_HAS_DEATH_TEST
-
   ParseGoogleTestFlagsOnly(argc, argv);
   GetUnitTestImpl()->PostFlagParsingInit();
 }
