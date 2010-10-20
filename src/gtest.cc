@@ -3491,8 +3491,6 @@ TestEventListener* TestEventListeners::repeater() { return repeater_; }
 // nothing if the previous and the current listener objects are the same.
 void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
   if (default_result_printer_ != listener) {
-    // It is an error to pass this method a listener that is already in the
-    // list.
     delete Release(default_result_printer_);
     default_result_printer_ = listener;
     if (listener != NULL)
