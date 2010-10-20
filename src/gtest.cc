@@ -2316,15 +2316,11 @@ void TestCase::AddTestInfo(TestInfo * test_info) {
 }
 
 void TestCase::Run() {
-
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
 
   for (int i = 0; i < total_test_count(); i++) {
     GetMutableTestInfo(i)->Run();
   }
-
-  impl->os_stack_trace_getter()->UponLeavingGTest();
-
 }
 
 // Clears the results of all tests in this test case.
