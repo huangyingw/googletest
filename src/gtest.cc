@@ -2238,9 +2238,6 @@ void TestInfo::Run() {
       factory_, &internal::TestFactoryBase::CreateTest,
       "the test fixture's constructor");
 
-  if ((test != NULL) && !Test::HasFatalFailure()) {
-    test->Run();
-  }
 
   impl->os_stack_trace_getter()->UponLeavingGTest();
   HandleExceptionsInMethodIfSupported(
