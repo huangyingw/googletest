@@ -3484,11 +3484,6 @@ TestEventListener* TestEventListeners::Release(TestEventListener* listener) {
 // subscribers.
 TestEventListener* TestEventListeners::repeater() { return repeater_; }
 
-// Sets the default_result_printer attribute to the provided listener.
-// The listener is also added to the listener list and previous
-// default_result_printer is removed from it and deleted. The listener can
-// also be NULL in which case it will not be added to the list. Does
-// nothing if the previous and the current listener objects are the same.
 void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
   if (default_result_printer_ != listener) {
     delete Release(default_result_printer_);
@@ -3824,8 +3819,6 @@ namespace internal {
 UnitTestImpl::UnitTestImpl(UnitTest* parent)
     : parent_(parent),
 #pragma warning(push)                    // Saves the current warning state.
-#pragma warning(disable:4355)            // Temporarily disables warning 4355
-                                         // (using this in initializer).
       default_global_test_part_result_reporter_(this),
       default_per_thread_test_part_result_reporter_(this),
 #pragma warning(pop)                     // Restores the warning state again.
