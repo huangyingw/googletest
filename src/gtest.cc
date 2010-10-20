@@ -2234,15 +2234,9 @@ void TestInfo::Run() {
 
   impl->os_stack_trace_getter()->UponLeavingGTest();
 
-  Test* const test = HandleExceptionsInMethodIfSupported(
-      factory_, &internal::TestFactoryBase::CreateTest,
-      "the test fixture's constructor");
-
-
+  
   impl->os_stack_trace_getter()->UponLeavingGTest();
-  HandleExceptionsInMethodIfSupported(
-      test, &Test::DeleteSelf_, "the test fixture's destructor");
-
+ 
   result_.set_elapsed_time(internal::GetTimeInMillis() - start);
 
   repeater->OnTestEnd(*this);
