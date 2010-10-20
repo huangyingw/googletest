@@ -3693,30 +3693,6 @@ int UnitTest::Run() {
   // used for the duration of the program.
   impl()->set_catch_exceptions(GTEST_FLAG(catch_exceptions));
 
-#if GTEST_HAS_SEH
-  const bool in_death_test_child_process =
-      internal::GTEST_FLAG(internal_run_death_test).length() > 0;
-
-  // Either the user wants Google Test to catch exceptions thrown by the
-  // tests or this is executing in the context of death test child
-  // process. In either case the user does not want to see pop-up dialogs
-  // about crashes - they are expected.
-  if (impl()->catch_exceptions() || in_death_test_child_process) {
-#if !GTEST_OS_WINDOWS_MOBILE
-    // SetErrorMode doesn't exist on CE.
-    SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOALIGNMENTFAULTEXCEPT |
-                 SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
-#endif  // !GTEST_OS_WINDOWS_MOBILE
-
-#if (defined(_MSC_VER) || GTEST_OS_WINDOWS_MINGW) && !GTEST_OS_WINDOWS_MOBILE
-    // Death test children can be terminated with _abort().  On Windows,
-    // _abort() can show a dialog with a warning message.  This forces the
-    // abort message to go to stderr instead.
-    _set_error_mode(_OUT_TO_STDERR);
-#endif
-
-  }
-#endif  // GTEST_HAS_SEH
 
   return HandleExceptionsInMethodIfSupported(
       impl(),
