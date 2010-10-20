@@ -1108,8 +1108,6 @@ class ThreadWithParam : public ThreadWithParamBase {
   }
 
   virtual void Run() {
-    if (thread_can_start_ != NULL)
-      thread_can_start_->WaitForNotification();
     func_(param_);
   }
 
