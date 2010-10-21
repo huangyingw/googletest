@@ -2221,8 +2221,6 @@ void UnitTestImpl::RegisterParameterizedTests() {
 // Creates the test object, runs it, records its result, and then
 // deletes it.
 void TestInfo::Run() {
-  if (!should_run_) return;
-
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
   impl->set_current_test_info(this);
 
