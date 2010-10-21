@@ -2230,14 +2230,12 @@ void TestInfo::Run() {
 
   repeater->OnTestStart(*this);
 
-  const TimeInMillis start = internal::GetTimeInMillis();
 
   impl->os_stack_trace_getter()->UponLeavingGTest();
 
   
   impl->os_stack_trace_getter()->UponLeavingGTest();
  
-  result_.set_elapsed_time(internal::GetTimeInMillis() - start);
 
   repeater->OnTestEnd(*this);
 
