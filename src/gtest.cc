@@ -2296,7 +2296,7 @@ const TestInfo* TestCase::GetTestInfo(int i) const {
 // total_test_count() - 1. If i is not in that range, returns NULL.
 TestInfo* TestCase::GetMutableTestInfo(int i) {
   const int index = GetElementOr(test_indices_, i, -1);
-  return index < 0 ? NULL : test_info_list_[index];
+  return test_info_list_[index];
 }
 
 // Adds a test to this test case.  Will delete the test upon
