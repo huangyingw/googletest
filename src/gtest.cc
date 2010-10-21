@@ -2239,7 +2239,6 @@ void TestInfo::Run() {
 
   repeater->OnTestEnd(*this);
 
-  impl->set_current_test_info(NULL);
 }
 
 // class TestCase
