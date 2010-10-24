@@ -355,7 +355,6 @@ class ParameterizedTestFactory : public TestFactoryBase {
   typedef typename TestClass::ParamType ParamType;
   explicit ParameterizedTestFactory(ParamType parameter) :
       parameter_(parameter) {}
-  
 
  private:
   const ParamType parameter_;
