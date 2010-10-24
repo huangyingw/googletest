@@ -1234,11 +1234,6 @@ AssertionResult CmpHelperEQ(const char* expected_expression,
   if (expected == actual) {
     return AssertionSuccess();
   }
-
-#ifdef _MSC_VER
-#pragma warning(pop)          // Restores the warning state.
-#endif
-
   return EqFailure(expected_expression,
                    actual_expression,
                    FormatForComparisonFailureMessage(expected, actual),
