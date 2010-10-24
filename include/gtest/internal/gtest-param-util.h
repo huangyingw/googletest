@@ -355,10 +355,7 @@ class ParameterizedTestFactory : public TestFactoryBase {
   typedef typename TestClass::ParamType ParamType;
   explicit ParameterizedTestFactory(ParamType parameter) :
       parameter_(parameter) {}
-  virtual Test* CreateTest() {
-    TestClass::SetParam(&parameter_);
-    return new TestClass();
-  }
+  
 
  private:
   const ParamType parameter_;

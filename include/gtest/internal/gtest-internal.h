@@ -499,7 +499,6 @@ class TestFactoryBase {
 
   // Creates a test instance to run. The instance is both created and destroyed
   // within TestInfoImpl::Run()
-  virtual Test* CreateTest() = 0;
 
  protected:
   TestFactoryBase() {}
@@ -513,7 +512,6 @@ class TestFactoryBase {
 template <class TestClass>
 class TestFactoryImpl : public TestFactoryBase {
  public:
-  virtual Test* CreateTest() { return new TestClass; }
 };
 
 #if GTEST_OS_WINDOWS
