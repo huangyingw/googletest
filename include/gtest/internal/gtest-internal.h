@@ -1175,8 +1175,6 @@ class GTEST_TEST_CLASS_NAME_(test_case_name, test_name) : public parent_class {\
  private:\
   virtual void TestBody();\
   static ::testing::TestInfo* const test_info_;\
-  GTEST_DISALLOW_COPY_AND_ASSIGN_(\
-      GTEST_TEST_CLASS_NAME_(test_case_name, test_name));\
 };\
 \
 ::testing::TestInfo* const GTEST_TEST_CLASS_NAME_(test_case_name, test_name)\
