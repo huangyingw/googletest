@@ -3239,10 +3239,6 @@ class StreamingListener : public EmptyTestEventListener {
     const char* file_name = test_part_result.file_name();
     if (file_name == NULL)
       file_name = "";
-    Send(String::Format("event=TestPartResult&file=%s&line=%d&message=",
-                        UrlEncode(file_name).c_str(),
-                        test_part_result.line_number()));
-    Send(UrlEncode(test_part_result.message()) + "\n");
   }
 
  private:
