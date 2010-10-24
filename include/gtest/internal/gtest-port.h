@@ -892,9 +892,7 @@ class ThreadWithParam : public ThreadWithParamBase {
   ThreadWithParam(
       UserThreadFunc func, T param, Notification* thread_can_start)
       : func_(func),
-        param_(param),
-        thread_can_start_(thread_can_start),
-        finished_(false) {}
+        param_(param) {}
   ~ThreadWithParam() { Join(); }
 
   void Join() {
