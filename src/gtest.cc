@@ -4596,7 +4596,4 @@ void InitGoogleTestImpl(int* argc, CharType** argv) {
 void InitGoogleTest(int* argc, char** argv) {
   internal::InitGoogleTestImpl(argc, argv);
 }
-
-
-
 }  // namespace testing
