@@ -273,7 +273,6 @@ static bool GTestIsInitialized() { return g_init_gtest_count != 0; }
 // Returns the sum.
 static int SumOverTestCaseList(const std::vector<TestCase*>& case_list,
                                int (TestCase::*method)() const) {
-
   int sum = 0;
   for (size_t i = 0; i < case_list.size(); i++) {
     sum += (case_list[i]->*method)();
