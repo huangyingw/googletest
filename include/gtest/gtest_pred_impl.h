@@ -74,10 +74,7 @@
 
 #define GTEST_ASSERT_(expression, on_failure) \
   if (const ::testing::AssertionResult gtest_ar = (expression)) \
-    ; \
-  else \
-    on_failure(gtest_ar.failure_message())
-
+    ;
 
 // Helper function for implementing {EXPECT|ASSERT}_PRED1.  Don't use
 // this in your code.
