@@ -923,7 +923,6 @@ class ThreadWithParam : public ThreadWithParamBase {
   bool finished_;  // true iff we know that the thread function has finished.
   pthread_t thread_;  // The native thread object.
 
-  GTEST_DISALLOW_COPY_AND_ASSIGN_(ThreadWithParam);
 };
 
 // MutexBase and Mutex implement mutex on pthreads-based platforms. They
