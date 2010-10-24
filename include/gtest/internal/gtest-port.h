@@ -858,7 +858,6 @@ class Notification {
       SleepMilliseconds(10);
     }
   }
-
  private:
   volatile bool notified_;
 };
