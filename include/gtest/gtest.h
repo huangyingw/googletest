@@ -1914,12 +1914,6 @@ GTEST_API_ AssertionResult DoubleLE(const char* expr1, const char* expr2,
   ::testing::internal::ScopedTrace GTEST_CONCAT_TOKEN_(gtest_trace_, __LINE__)(\
     __FILE__, __LINE__, ::testing::Message() << (message))
 
-template <typename T1, typename T2>
-bool StaticAssertTypeEq() {
-  (void)internal::StaticAssertTypeEqHelper<T1, T2>();
-  return true;
-}
-
 #define GTEST_TEST(test_case_name, test_name)\
   GTEST_TEST_(test_case_name, test_name, \
               ::testing::Test, ::testing::internal::GetTestTypeId())
