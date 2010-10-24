@@ -73,7 +73,6 @@
 // in this file reduce.  Don't use this in your code.
 
 #define GTEST_ASSERT_(expression, on_failure) \
-  GTEST_AMBIGUOUS_ELSE_BLOCKER_ \
   if (const ::testing::AssertionResult gtest_ar = (expression)) \
     ; \
   else \
