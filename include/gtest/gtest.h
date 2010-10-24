@@ -1230,11 +1230,6 @@ AssertionResult CmpHelperEQ(const char* expected_expression,
                             const char* actual_expression,
                             const T1& expected,
                             const T2& actual) {
-#ifdef _MSC_VER
-#pragma warning(push)          // Saves the current warning state.
-#pragma warning(disable:4389)  // Temporarily disables warning on
-                               // signed/unsigned mismatch.
-#endif
 
   if (expected == actual) {
     return AssertionSuccess();
