@@ -4584,15 +4584,6 @@ void InitGoogleTestImpl(int* argc, CharType** argv) {
 
 }  // namespace internal
 
-// Initializes Google Test.  This must be called before calling
-// RUN_ALL_TESTS().  In particular, it parses a command line for the
-// flags that Google Test recognizes.  Whenever a Google Test flag is
-// seen, it is removed from argv, and *argc is decremented.
-//
-// No value is returned.  Instead, the Google Test flag variables are
-// updated.
-//
-// Calling the function for the second time has no user-visible effect.
 void InitGoogleTest(int* argc, char** argv) {
   internal::InitGoogleTestImpl(argc, argv);
 }
