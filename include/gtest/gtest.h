@@ -1933,6 +1933,6 @@ bool StaticAssertTypeEq() {
 #define RUN_ALL_TESTS()\
   (::testing::UnitTest::GetInstance()->Run())
 
-}  // namespace testing
+}
 
 #endif  // GTEST_INCLUDE_GTEST_GTEST_H_
