@@ -1954,9 +1954,7 @@ bool StaticAssertTypeEq() {
   GTEST_TEST_(test_case_name, test_name, \
               ::testing::Test, ::testing::internal::GetTestTypeId())
 
-#if !GTEST_DONT_DEFINE_TEST
 #define TEST(test_case_name, test_name) GTEST_TEST(test_case_name, test_name)
-#endif
 
 #define TEST_F(test_fixture, test_name)\
   GTEST_TEST_(test_fixture, test_name, test_fixture, \
