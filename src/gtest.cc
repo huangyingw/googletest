@@ -891,10 +891,7 @@ Message& Message::operator <<(const ::wstring& wstr) {
 // AssertionResult constructors.
 // Used in EXPECT_TRUE/FALSE(assertion_result).
 AssertionResult::AssertionResult(const AssertionResult& other)
-    : success_(other.success_),
-      message_(other.message_.get() != NULL ?
-               new ::std::string(*other.message_) :
-               static_cast< ::std::string*>(NULL)) {
+    : success_(other.success_) {
 }
 
 // Returns the assertion's negation. Used with EXPECT/ASSERT_FALSE.
