@@ -1038,8 +1038,6 @@ class Notification {
 
  private:
   volatile bool notified_;
-
-  GTEST_DISALLOW_COPY_AND_ASSIGN_(Notification);
 };
 
 // As a C-function, ThreadFuncWithCLinkage cannot be templated itself.
