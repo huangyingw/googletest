@@ -4573,10 +4573,6 @@ void ParseGoogleTestFlagsOnly(int* argc, wchar_t** argv) {
   ParseGoogleTestFlagsOnlyImpl(argc, argv);
 }
 
-// The internal implementation of InitGoogleTest().
-//
-// The type parameter CharType can be instantiated to either char or
-// wchar_t.
 template <typename CharType>
 void InitGoogleTestImpl(int* argc, CharType** argv) {
   g_init_gtest_count++;
