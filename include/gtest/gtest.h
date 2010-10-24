@@ -259,12 +259,7 @@ class GTEST_API_ AssertionResult {
     message_->append(a_message.GetString().c_str());
   }
 
-  // Stores result of the assertion predicate.
   bool success_;
-  // Stores the message describing the condition in case the expectation
-  // construct is not satisfied with the predicate's outcome.
-  // Referenced via a pointer to avoid taking too much stack frame space
-  // with test assertions.
   internal::scoped_ptr< ::std::string> message_;
 
   GTEST_DISALLOW_ASSIGN_(AssertionResult);
