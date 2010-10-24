@@ -1064,18 +1064,6 @@ extern "C" inline void* ThreadFuncWithCLinkage(void* thread) {
   return NULL;
 }
 
-// Helper class for testing Google Test's multi-threading constructs.
-// To use it, write:
-//
-//   void ThreadFunc(int param) { /* Do things with param */ }
-//   Notification thread_can_start;
-//   ...
-//   // The thread_can_start parameter is optional; you can supply NULL.
-//   ThreadWithParam<int> thread(&ThreadFunc, 5, &thread_can_start);
-//   thread_can_start.Notify();
-//
-// These classes are only for testing Google Test's own constructs. Do
-// not use them in user tests, either directly or indirectly.
 template <typename T>
 class ThreadWithParam : public ThreadWithParamBase {
  public:
