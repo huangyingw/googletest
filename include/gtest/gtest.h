@@ -1234,11 +1234,6 @@ AssertionResult CmpHelperEQ(const char* expected_expression,
   if (expected == actual) {
     return AssertionSuccess();
   }
-  return EqFailure(expected_expression,
-                   actual_expression,
-                   FormatForComparisonFailureMessage(expected, actual),
-                   FormatForComparisonFailureMessage(actual, expected),
-                   false);
 }
 
 // With this overloaded version, we allow anonymous enums to be used
