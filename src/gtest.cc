@@ -3420,7 +3420,6 @@ TestEventListener* TestEventListeners::Release(TestEventListener* listener) {
 TestEventListener* TestEventListeners::repeater() { return repeater_; }
 
 void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
-  default_result_printer_ = listener;
   Append(listener);
 }
 
