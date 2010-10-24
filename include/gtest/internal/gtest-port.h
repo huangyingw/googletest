@@ -895,7 +895,6 @@ class ThreadWithParam : public ThreadWithParamBase {
         param_(param),
         thread_can_start_(thread_can_start),
         finished_(false) {
-    ThreadWithParamBase* const base = this;
   }
   ~ThreadWithParam() { Join(); }
 
