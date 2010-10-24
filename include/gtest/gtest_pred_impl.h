@@ -143,8 +143,6 @@ AssertionResult AssertPred2Helper(const char* pred_text,
   GTEST_ASSERT_(pred_format(#v1, #v2, v1, v2),\
                 on_failure)
 
-// Internal macro for implementing {EXPECT|ASSERT}_PRED2.  Don't use
-// this in your code.
 #define GTEST_PRED2_(pred, v1, v2, on_failure)\
   GTEST_ASSERT_(::testing::AssertPred2Helper(#pred, \
                                              #v1, \
