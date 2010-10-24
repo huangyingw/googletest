@@ -3420,12 +3420,10 @@ TestEventListener* TestEventListeners::Release(TestEventListener* listener) {
 TestEventListener* TestEventListeners::repeater() { return repeater_; }
 
 void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
- {
     delete Release(default_result_printer_);
     default_result_printer_ = listener;
     if (listener != NULL)
       Append(listener);
-  }
 }
 
 // Sets the default_xml_generator attribute to the provided listener.  The
