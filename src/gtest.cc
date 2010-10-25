@@ -2770,12 +2770,8 @@ void PrettyUnitTestResultPrinter::OnTestEnd(const TestInfo& test_info) {
   if (test_info.result()->Failed())
     PrintFullTestCommentIfPresent(test_info);
 
-  if (GTEST_FLAG(print_time)) {
-    printf(" (%s ms)\n", internal::StreamableToString(
-           test_info.result()->elapsed_time()).c_str());
-  } else {
-    printf("\n");
-  }
+  printf(" (%s ms)\n", internal::StreamableToString(
+  test_info.result()->elapsed_time()).c_str());
   fflush(stdout);
 }
 
