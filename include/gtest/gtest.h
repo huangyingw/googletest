@@ -362,8 +362,6 @@ class GTEST_API_ Test {
   virtual void TearDown();
 
  private:
-  // Returns true iff the current test has the same fixture class as
-  // the first test in the current test case.
   static bool HasSameFixtureClass();
 
   // Runs the test after the test fixture has been set up.
