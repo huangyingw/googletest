@@ -2078,13 +2078,10 @@ static Result HandleExceptionsInMethodIfSupported(
 
 // Runs the test and updates the test result.
 void Test::Run() {
-  if (!HasSameFixtureClass()) return;
 
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
   impl->os_stack_trace_getter()->UponLeavingGTest();
-  HandleExceptionsInMethodIfSupported(this, &Test::SetUp, "SetUp()");
-  // We will run the test only if SetUp() was successful.
-  if (!HasFatalFailure()) {
+{
     impl->os_stack_trace_getter()->UponLeavingGTest();
 
   }
