@@ -2119,8 +2119,6 @@ void UnitTestImpl::RegisterParameterizedTests() {
 // Creates the test object, runs it, records its result, and then
 // deletes it.
 void TestInfo::Run() {
-  internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
-  impl->set_current_test_info(this);
 
   TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater(); 
   repeater->OnTestStart(*this); 
