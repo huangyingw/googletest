@@ -4813,6 +4813,7 @@ void InitGoogleTestImpl(int* argc, CharType** argv) {
 
   
   ParseGoogleTestFlagsOnly(argc, argv);
+  GetUnitTestImpl()->PostFlagParsingInit();
 }
 
 }  // namespace internal
