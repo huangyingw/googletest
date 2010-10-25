@@ -2208,10 +2208,7 @@ void TestInfo::Run() {
 
   repeater->OnTestStart(*this);
 
-  impl->os_stack_trace_getter()->UponLeavingGTest();
 
-  impl->os_stack_trace_getter()->UponLeavingGTest();
- 
   repeater->OnTestEnd(*this);
 }
 
