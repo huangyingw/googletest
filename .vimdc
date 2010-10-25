@@ -1,7 +1,0 @@
-set path+=/home/huangyingw/myproject/git/c_c++/googletest/
-set path+=/home/huangyingw/myproject/git/c_c++/googletest/include
-set tags+=/home/huangyingw/myproject/git/c_c++/googletest/tags
-if filereadable("cscope.out")
-cs add cscope.out .
-endif
-
