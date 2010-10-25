@@ -3853,19 +3853,6 @@ bool UnitTestImpl::RunAllTests() {
     if (!Passed()) {
       failed = true;
     }
-
-    // Restores the original test order after the iteration.  This
-    // allows the user to quickly repro a failure that happens in the
-    // N-th iteration without repeating the first (N - 1) iterations.
-    // This is not enclosed in "if (GTEST_FLAG(shuffle)) { ... }", in
-    // case the user somehow changes the value of the flag somewhere
-    // (it's always safe to unshuffle the tests).
-    UnshuffleTests();
-
-    if (GTEST_FLAG(shuffle)) {
-      // Picks a new random seed for each iteration.
-      random_seed_ = GetNextRandomSeed(random_seed_);
-    }
   }
 
   repeater->OnTestProgramEnd(*parent_);
