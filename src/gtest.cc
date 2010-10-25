@@ -3840,10 +3840,6 @@ bool UnitTestImpl::RunAllTests() {
 
     // Runs each test case if there is at least one test to run.
     if (has_tests_to_run) {
-      // Sets up all environments beforehand.
-      repeater->OnEnvironmentsSetUpStart(*parent_);
-      ForEach(environments_, SetUpEnvironment);
-      repeater->OnEnvironmentsSetUpEnd(*parent_);
 
       // Runs the tests only if there was no fatal failure during global
       // set-up.
