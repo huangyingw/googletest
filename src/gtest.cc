@@ -1877,22 +1877,6 @@ void ReportFailureInUnknownLocation(TestPartResult::Type result_type,
 
 }  // namespace internal
 
-#if GTEST_HAS_SEH
-
-// Adds an "exception thrown" fatal failure to the current test.  This
-// function returns its result via an output parameter pointer because VC++
-// prohibits creation of objects with destructors on stack in functions
-// using __try (see error C2712).
-static internal::String* FormatSehExceptionMessage(DWORD exception_code,
-                                                   const char* location) {
-  Message message;
-  message << "SEH exception with code 0x" << std::setbase(16) <<
-    exception_code << std::setbase(10) << " thrown in " << location << ".";
-
-  return new internal::String(message.GetString());
-}
-
-#endif  // GTEST_HAS_SEH
 
 #if GTEST_HAS_EXCEPTIONS
 
