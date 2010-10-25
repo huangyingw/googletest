@@ -2078,7 +2078,6 @@ static Result HandleExceptionsInMethodIfSupported(
 
 // Runs the test and updates the test result.
 void Test::Run() {
-
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
 }
 
