@@ -2204,11 +2204,8 @@ void TestInfo::Run() {
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
   impl->set_current_test_info(this);
 
-  TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater();
-
-  repeater->OnTestStart(*this);
-
-
+  TestEventListener* repeater = UnitTest::GetInstance()->listeners().repeater(); 
+  repeater->OnTestStart(*this); 
   repeater->OnTestEnd(*this);
 }
 
@@ -3233,9 +3230,6 @@ class StreamingListener : public EmptyTestEventListener {
 
   // Sends a string to the socket.
   void Send(const string& message) {
-    const int len = static_cast<int>(message.length());
-    if (write(sockfd_, message.c_str(), len) != len) {
-    }
   }
 
   int sockfd_;   // socket file descriptor
