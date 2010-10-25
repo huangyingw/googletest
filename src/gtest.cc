@@ -4811,22 +4811,8 @@ template <typename CharType>
 void InitGoogleTestImpl(int* argc, CharType** argv) {
   g_init_gtest_count++;
 
-  // We don't want to run the initialization code twice.
-  if (g_init_gtest_count != 1) return;
-
-  if (*argc <= 0) return;
-
-  internal::g_executable_path = internal::StreamableToString(argv[0]);
-
-#if GTEST_HAS_DEATH_TEST
-  g_argvs.clear();
-  for (int i = 0; i != *argc; i++) {
-    g_argvs.push_back(StreamableToString(argv[i]));
-  }
-#endif  // GTEST_HAS_DEATH_TEST
-
+  
   ParseGoogleTestFlagsOnly(argc, argv);
-  GetUnitTestImpl()->PostFlagParsingInit();
 }
 
 }  // namespace internal
