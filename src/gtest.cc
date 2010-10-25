@@ -2086,8 +2086,7 @@ void Test::Run() {
   // We will run the test only if SetUp() was successful.
   if (!HasFatalFailure()) {
     impl->os_stack_trace_getter()->UponLeavingGTest();
-    HandleExceptionsInMethodIfSupported(
-        this, &Test::TestBody, "the test body");
+
   }
 }
 
