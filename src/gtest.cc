@@ -2089,13 +2089,6 @@ void Test::Run() {
     HandleExceptionsInMethodIfSupported(
         this, &Test::TestBody, "the test body");
   }
-
-  // However, we want to clean up as much as possible.  Hence we will
-  // always call TearDown(), even if SetUp() or the test body has
-  // failed.
-  impl->os_stack_trace_getter()->UponLeavingGTest();
-  HandleExceptionsInMethodIfSupported(
-      this, &Test::TearDown, "TearDown()");
 }
 
 // Returns true iff the current test has a fatal failure.
