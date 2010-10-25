@@ -3818,15 +3818,6 @@ bool UnitTestImpl::RunAllTests() {
 
     const TimeInMillis start = GetTimeInMillis();
 
-    // Shuffles test cases and tests if requested.
-    if (has_tests_to_run && GTEST_FLAG(shuffle)) {
-      random()->Reseed(random_seed_);
-      // This should be done before calling OnTestIterationStart(),
-      // such that a test event listener can see the actual test order
-      // in the event.
-      ShuffleTests();
-    }
-
     // Tells the unit test event listeners that the tests are about to start.
     repeater->OnTestIterationStart(*parent_, i);
 
