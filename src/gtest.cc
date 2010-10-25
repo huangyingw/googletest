@@ -3854,12 +3854,6 @@ bool UnitTestImpl::RunAllTests() {
           GetMutableTestCase(test_index)->Run();
         }
       }
-
-      // Tears down all environments in reverse order afterwards.
-      repeater->OnEnvironmentsTearDownStart(*parent_);
-      std::for_each(environments_.rbegin(), environments_.rend(),
-                    TearDownEnvironment);
-      repeater->OnEnvironmentsTearDownEnd(*parent_);
     }
 
     elapsed_time_ = GetTimeInMillis() - start;
