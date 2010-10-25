@@ -3816,9 +3816,7 @@ bool UnitTestImpl::RunAllTests() {
     // assertions executed before RUN_ALL_TESTS().
     ClearNonAdHocTestResult();
 
-    const TimeInMillis start = GetTimeInMillis();
 
-    // Tells the unit test event listeners that the tests are about to start.
     repeater->OnTestIterationStart(*parent_, i);
 
     // Runs each test case if there is at least one test to run.
@@ -3834,8 +3832,6 @@ bool UnitTestImpl::RunAllTests() {
         }
       }
     }
-
-    elapsed_time_ = GetTimeInMillis() - start;
 
     // Tells the unit test event listener that the tests have just finished.
     repeater->OnTestIterationEnd(*parent_, i);
