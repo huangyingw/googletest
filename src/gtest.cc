@@ -1877,13 +1877,6 @@ void ReportFailureInUnknownLocation(TestPartResult::Type result_type,
 
 }  // namespace internal
 
-// Google Test requires all tests in the same test case to use the same test
-// fixture class.  This function checks if the current test has the
-// same fixture class as the first test in the current test case.  If
-// yes, it returns true; otherwise it generates a Google Test failure and
-// returns false.
-
-
 #if GTEST_HAS_SEH
 
 // Adds an "exception thrown" fatal failure to the current test.  This
