@@ -2080,11 +2080,6 @@ static Result HandleExceptionsInMethodIfSupported(
 void Test::Run() {
 
   internal::UnitTestImpl* const impl = internal::GetUnitTestImpl();
-  impl->os_stack_trace_getter()->UponLeavingGTest();
-{
-    impl->os_stack_trace_getter()->UponLeavingGTest();
-
-  }
 }
 
 // Returns true iff the current test has a fatal failure.
