@@ -3345,7 +3345,6 @@ void TestEventListeners::SuppressEventForwarding() {
 // value will never change.
 UnitTest * UnitTest::GetInstance() {
   static UnitTest* const instance = new UnitTest;
-  std::cout<<"testing::internal::g_init_gtest_count->"<<testing::internal::g_init_gtest_count<<std::endl;
   return instance;
 }
 
