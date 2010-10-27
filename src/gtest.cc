@@ -1945,53 +1945,7 @@ static Result HandleSehExceptionsInMethodIfSupported(
 template <class T, typename Result>
 static Result HandleExceptionsInMethodIfSupported(
     T* object, Result (T::*method)(), const char* location) {
-  // NOTE: The user code can affect the way in which Google Test handles
-  // exceptions by setting GTEST_FLAG(catch_exceptions), but only before
-  // RUN_ALL_TESTS() starts. It is technically possible to check the flag
-  // after the exception is caught and either report or re-throw the
-  // exception based on the flag's value:
-  //
-  // try {
-  //   // Perform the test method.
-  // } catch (...) {
-  //   if (GTEST_FLAG(catch_exceptions))
-  //     // Report the exception as failure.
-  //   else
-  //     throw;  // Re-throws the original exception.
-  // }
-  //
-  // However, the purpose of this flag is to allow the program to drop into
-  // the debugger when the exception is thrown. On most platforms, once the
-  // control enters the catch block, the exception origin information is
-  // lost and the debugger will stop the program at the point of the
-  // re-throw in this function -- instead of at the point of the original
-  // throw statement in the code under test.  For this reason, we perform
-  // the check early, sacrificing the ability to affect Google Test's
-  // exception handling in the method where the exception is thrown.
-  if (internal::GetUnitTestImpl()->catch_exceptions()) {
-#if GTEST_HAS_EXCEPTIONS
-    try {
-      return HandleSehExceptionsInMethodIfSupported(object, method, location);
-    } catch (const GoogleTestFailureException&) {  // NOLINT
-      // This exception doesn't originate in code under test. It makes no
-      // sense to report it as a test failure.
-      throw;
-    } catch (const std::exception& e) {  // NOLINT
-      internal::ReportFailureInUnknownLocation(
-          TestPartResult::kFatalFailure,
-          FormatCxxExceptionMessage(e.what(), location));
-    } catch (...) {  // NOLINT
-      internal::ReportFailureInUnknownLocation(
-          TestPartResult::kFatalFailure,
-          FormatCxxExceptionMessage(NULL, location));
-    }
-    return static_cast<Result>(0);
-#else
-    return HandleSehExceptionsInMethodIfSupported(object, method, location);
-#endif  // GTEST_HAS_EXCEPTIONS
-  } else {
     return (object->*method)();
-  }
 }
 
 // Runs the test and updates the test result.
@@ -3515,7 +3469,6 @@ void UnitTest::RecordPropertyForCurrentTest(const char* key,
 // We don't protect this under mutex_, as we only support calling it
 // from the main thread.
 int UnitTest::Run() {
-
   return HandleExceptionsInMethodIfSupported(
       impl(),
       &internal::UnitTestImpl::RunAllTests,
