@@ -3759,14 +3759,7 @@ static void TearDownEnvironment(Environment* env) { env->TearDown(); }
 // All other functions called from RunAllTests() may safely assume that
 // parameterized tests are ready to be counted and run.
 bool UnitTestImpl::RunAllTests() {
-  // Do not run any test if the --help flag was specified.
-  if (g_help_flag)
-    return true;
-
-  // Repeats the call to the post-flag parsing initialization in case the
-  // user didn't call InitGoogleTest.
-  PostFlagParsingInit();
-
+  
   // Even if sharding is not on, test runners may want to use the
   // GTEST_SHARD_STATUS_FILE to query whether the test supports the sharding
   // protocol.
